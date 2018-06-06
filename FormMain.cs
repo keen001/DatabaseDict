@@ -18,6 +18,8 @@ namespace DatabaseDict
         internal List<DatabaseConfig> listDB = new List<DatabaseConfig>();
         private DBHelper myDBHelper = new DBHelper();
         BindingSource bsDBList;
+
+        DataTable currentDataBaseTables;//当前数据库表列表
         public FormMain()
         {
             InitializeComponent();
@@ -93,6 +95,7 @@ namespace DatabaseDict
                 return;
             }
             DataTable dtTables = myDBHelper.GetDBTables(dbConfig);
+            currentDataBaseTables = dtTables;
             listBox_Tables.DataSource = dtTables;
             listBox_Tables.DisplayMember = "name";
 
@@ -561,7 +564,40 @@ namespace DatabaseDict
             }
         }
 
-    
+        /// <summary>
+        /// 搜索表
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            string value= this.textBox1.Text;
+            if (value.Length > 0)
+            {
+                DataTable tempTable = new DataTable();
+                tempTable.Columns.Add("name", typeof(string));
+                tempTable.Columns.Add("comment", typeof(string));
+                foreach (DataRow item in currentDataBaseTables.Rows)
+                {
+                    if (item["name"].ToString().ToUpper().IndexOf(value.ToUpper())!=-1)
+                    {
+                        DataRow row = tempTable.NewRow();
+                        row["name"] = item["name"].ToString();
+                        row["comment"] = item["comment"].ToString();
+                        tempTable.Rows.Add(row);
+                    }
+                }
 
+                listBox_Tables.DataSource = tempTable;
+                listBox_Tables.DisplayMember = "name";
+            }
+            else
+            {
+                listBox_Tables.DataSource = currentDataBaseTables;
+                listBox_Tables.DisplayMember = "name";
+            }
+
+
+        }
     }
 }
