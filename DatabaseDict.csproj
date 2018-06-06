@@ -35,6 +35,10 @@
     <ApplicationIcon>K.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Keen001.KNF, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\Keen001.KNF.dll</HintPath>
+    </Reference>
     <Reference Include="MySql.Data">
       <HintPath>..\..\KNF\Document\MySql.Data\MySql.Data.dll</HintPath>
     </Reference>
@@ -105,15 +109,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\KNF\KNF\KNF.csproj">
-      <Project>{3a2407aa-3a05-4c2a-9aba-38483703f466}</Project>
-      <Name>KNF</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="K.ico" />
-    <Content Include="keen.txt" />
-    <Content Include="TextFile1.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
