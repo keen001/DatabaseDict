@@ -61,7 +61,7 @@ namespace DatabaseDict
         private void Form1_Load(object sender, EventArgs e)
         {
             InitConfit();
-
+            
             dataGridView1.AutoGenerateColumns = false;
             bsDBList = new BindingSource();
             bsDBList.DataSource = listDB;
@@ -109,6 +109,8 @@ namespace DatabaseDict
         private Boolean dbConfigLoaded = false;
         private void comboBox_Database_SelectedIndexChanged(object sender, EventArgs e)
         {
+            this.textBox1.Text = "";
+            this.textBox1.Focus();
             if (dbConfigLoaded)
             {
                 LoadDBTables();
