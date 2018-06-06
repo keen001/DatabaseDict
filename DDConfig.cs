@@ -11,7 +11,7 @@ namespace DatabaseDict
         public DDConfig() 
         {
             this.FileName = "dd.config";
-            this.listDBConfig = new List<DatabaseConfig>();
+            this.listDBConfig = new List<DatabaseConfig>();d
         }
 
         public List<DatabaseConfig> listDBConfig { get; set; }
