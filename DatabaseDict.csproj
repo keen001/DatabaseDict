@@ -112,6 +112,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="K.ico" />
+    <Content Include="keen.txt" />
     <Content Include="TextFile1.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
