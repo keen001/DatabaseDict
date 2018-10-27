@@ -37,10 +37,10 @@
   <ItemGroup>
     <Reference Include="Keen001.KNF, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\Keen001.KNF.dll</HintPath>
+      <HintPath>Document\Keen001.KNF.dll</HintPath>
     </Reference>
     <Reference Include="MySql.Data">
-      <HintPath>..\..\KNF\Document\MySql.Data\MySql.Data.dll</HintPath>
+      <HintPath>Document\MySql.Data.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -109,6 +109,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Document\Keen001.KNF.dll" />
+    <Content Include="Document\MySql.Data.dll" />
     <Content Include="K.ico" />
     <Content Include="keen.txt" />
   </ItemGroup>
