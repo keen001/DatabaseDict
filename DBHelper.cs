@@ -69,8 +69,8 @@ namespace DatabaseDict
             String sql = "";
             if (dbc.Type == "MySql")
             {
-                sql = "SELECT * from " + tableName + " limit 0";
-                dt = Keen001.KNF.Database.MySqlHelper.GetDataSet(dbc.ConnString, CommandType.Text, sql, null).Tables[0];
+                sql = "SELECT * from " + tableName + " limit 0"; 
+                dt = MySqlHelper.GetDataSet(dbc.ConnString, CommandType.Text, sql, null).Tables[0];
             }
             if (dbc.Type == "SQLServer")
             {

@@ -281,7 +281,7 @@ namespace DatabaseDict
             b.Append("\r\n" + "            this._DBTableName = \"" + strDBTableName + "\";");
             if (comboBox_PrimaryKeyType.Text == "自增")
             {
-                b.Append("\r\n" + "            this._PrimaryKeyType = Database.PrimaryKeyType.AutoIncrease;");
+                //b.Append("\r\n" + "            this._PrimaryKeyType = Database.PrimaryKeyType.AutoIncrease;");
             }
             else
             {
@@ -306,11 +306,11 @@ namespace DatabaseDict
                 b.Append("\r\n" + "        /// </summary>");
                 if (dtZeroTable.Columns[i].DataType.ToString().ToLower() == "System.String".ToLower()) 
                 {
-                    b.Append("\r\n" + "        public " + dtZeroTable.Columns[i].DataType.ToString() + " " + dtZeroTable.Columns[i].ColumnName + " { get; set; }");
+                    b.Append("\r\n" + "        public " + dtZeroTable.Columns[i].DataType.ToString() + " " + this.GetNetColumnName(dtZeroTable.Columns[i].ColumnName) + " { get; set; }");
                 }
                 else
                 {
-                    b.Append("\r\n" + "        public " + dtZeroTable.Columns[i].DataType.ToString() + "? " + dtZeroTable.Columns[i].ColumnName + " { get; set; }");
+                    b.Append("\r\n" + "        public " + dtZeroTable.Columns[i].DataType.ToString() + "? " + this.GetNetColumnName(dtZeroTable.Columns[i].ColumnName) + " { get; set; }");
                 }
             }
             b.Append("\r\n" + "    }");
@@ -460,6 +460,26 @@ namespace DatabaseDict
              txtCodeMybatis.Text = b.ToString();
              #endregion
             return true;
+        }
+
+
+        private string GetNetColumnName(string name)
+        {
+            string res = "";
+            bool needUpper = false;
+            for (var i = 0; i < name.Length; i++)
+            {
+                string c = name[i].ToString();
+                if (i ==0)
+                {
+                    res += c.ToUpper();
+                    continue;
+                }
+                if (c == "_") { needUpper = true;continue; }
+                res += needUpper?c.ToUpper():c;
+                needUpper = false;
+            }
+            return res;
         }
 
         private string getJavaColumnName(string name)
